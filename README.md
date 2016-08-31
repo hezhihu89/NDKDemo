@@ -1,8 +1,8 @@
 # NDKDemo
-使用 JNI 以及 CMake 编译SO 库的方法
+使用 NDK 以及 CMake 编译 SO 库 对JNI 调用的方法
 
 
-# Android Studio CMake 编译NDK
+# Android Studio CMake-JNI 编译jni
 ---
 ## Android Studio 创建一个新项目  创建的时候勾选 include C++ Support  
 
@@ -50,7 +50,8 @@ add_library( # Sets the name of the library.
 #### 正在研究 怎么导出.SO 文件  之后再补上
 
 
-##  JNI-NDK 快捷键
+#  NDK-JNI
+## 快捷键
  ### Android Studio 设置-Tools- External Tools 添加
  
  ```java 
