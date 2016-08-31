@@ -48,3 +48,65 @@ add_library( # Sets the name of the library.
 #### 直接编译运行。。。。。
 
 #### 正在研究 怎么导出.SO 文件  之后再补上
+
+
+##  JNI-NDK 快捷键
+ ### Android Studio 设置-Tools- External Tools 添加
+ 
+ ```java 
+ 
+ javah    用于生成头文件
+  Program：$JDKPath$/bin/javah
+  注意：这个命令我加上了-encoding UTF-8 指定编码，你可以改成你工程的编码。
+  Parameters：-encoding UTF-8 -d ../jni -jni $FileClass$
+  Working directory：$SourcepathEntry$\..\java
+
+  ndk-build    用于构建 so 包
+  注意：MAC/Linux 用 ndk-build，没有.cmd 后缀
+  Program：SKD path\Android\sdk\ndk-bundle\ndk-build.cmd
+  Parameters：什么都不用填
+  Working directory：$ModuleFileDir$\src\main
+
+  ndk-build clean    清除 so 包
+  注意：MAC/Linux 用 ndk-build，没有.cmd 后缀
+  Program：SKD path\Android\sdk\ndk-bundle\ndk-build.cmd
+  Parameters：clean
+  Working directory：$ModuleFileDir$\src\main
+  
+  SDK-path === SDK 路径
+ 
+ ```
+
+### 在 gradle.properties 文件中添加
+```java
+在 gradle.properties 文件中添加
+```
+
+在 app build.gradle中
+```java
+
+android{
+  // 添加-----------1
+   sourceSets{
+        main{
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+    }
+// 添加-----------1
+     defaultConfig {
+        '''
+        // 添加-----------2
+       ndk{
+                 moduleName   "NDKDemo-OS"
+             }
+        // 添加-----------2
+         }
+}
+
+
+
+
+```
+
+
+
